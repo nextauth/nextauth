@@ -1,0 +1,25 @@
+{
+  "name": "nextauth-account",
+  "version": "0.0.1",
+  "description": "express based, authorization server for Node.js",
+  "author": {
+    "name": "nextauth",
+    "email": "nextauth@gmail.com",
+    "url": "http://blog.coderifleman.com"
+  },
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha --bail --reporter spec test/",
+    "coverage": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^0.10.2",
+    "express": "^4.10.6",
+    "jscs": "^1.8.1",
+    "mocha": "^2.0.1",
+    "supertest": "^0.15.0"
+  },
+  "dependencies": {
+    "node.extend": "^1.1.3"
+  }
+}

@@ -1,0 +1,16 @@
+{
+    "env": {
+        "node" : true,
+        "mocha" : true
+    },
+    "rules": {
+        "quotes": [2, "single", "avoid-escape"],
+        "strict": 0,
+        "no-underscore-dangle" : 0,
+        "new-cap" : 0,
+        "key-spacing": [2, {
+             "beforeColon": true,
+             "afterColon": true
+        }]
+    }
+}

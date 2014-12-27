@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Nextauth Signin</title>
+    <style>
+        .blind {visibility:hidden;overflow:hidden;position:absolute;top:0;left:0;width:1px;height:1px;font-size:0;line-height:0;}
+    </style>
+</head>
+<body>
+<form enctype="application/x-www-form-urlencoded" method="post" id="form-signin">
+    <fieldset class="form-signin-wrap">
+        <legend class="blind">로그인</legend>
+
+        <div class="email-wrap">
+            <label for="user-email">이메일 : </label>
+            <input id="user-email" name="useremail" type="text" placeholder="이메일을 입력하세요."/>
+        </div>
+
+        <div class="password-wrap">
+            <label for="user-password">비밀번호 : </label>
+            <input id="user-password" name="password" type="password" placeholder="비밀번호를 입력하세요."/>
+        </div>
+
+        <div class="message">
+            <span></span>
+        </div>
+
+        <input type="submit" value="로그인" title="로그인"/>
+    </fieldset>
+</form>
+
+<script>
+    var signform = document.getElementById('form-signin');
+    var message = signform.querySelector('.message span');
+
+    signform.addEventListener('submit', function(event){
+        event.preventDefault();
+
+        var email = document.getElementById('user-email').value;
+        var password = document.getElementById('user-password').value;
+        var params = 'useremail=' + email + '&password=' + password;
+        var xhr = new XMLHttpRequest();
+
+        if(!email || !password){
+            message.innerHTML = '이메일 혹은 비밀번호가 생략됐습니다.';
+            return;
+        }
+
+        xhr.open('POST', '/api/account', true);
+
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('Content-length', params.length);
+        xhr.setRequestHeader('Connection', 'close');
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                window.location = '/';
+            } else {
+                message.innerHTML = xhr.response;
+            }
+        }
+
+        xhr.send(params);
+    });
+</script>
+</body>
+</html>

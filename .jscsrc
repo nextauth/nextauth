@@ -1,0 +1,11 @@
+{
+    "preset": "google",
+    "fileExtensions": [".js"],
+    "maximumLineLength": 120,
+    "validateIndentation": 4,
+    "disallowKeywords": ["with"],
+    "safeContextKeyword": "self",
+    "excludeFiles": [
+        "**/node_modules"
+    ]
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Nextauth with Mongoose</title>
+    <style>
+        .blind {visibility:hidden;overflow:hidden;position:absolute;top:0;left:0;width:1px;height:1px;font-size:0;line-height:0;}
+    </style>
+</head>
+<body>
+<h1>반갑습니다. <%= user.name %>님!</h1>
+<label for="user-signout" class="blind">로그아웃</label>
+<input id="user-signout" type="button" title="로그아웃" value="로그아웃"/>
+
+<script>
+    var button = document.getElementById('user-signout');
+
+    button.addEventListener('click', function(){
+        var xhr = new XMLHttpRequest();
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                window.location = '/signin';
+            }
+        }
+
+        xhr.open('DELETE', '/api/account', true);
+        xhr.send(null);
+    });
+</script>
+</body>
+</html>
